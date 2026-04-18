@@ -1,0 +1,24 @@
+{
+  "name": "ai_block_blast",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./scr/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dan-akula/ai_block_blast.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Dan-akula/ai_block_blast/issues"
+  },
+  "homepage": "https://github.com/Dan-akula/ai_block_blast#readme",
+  "dependencies": {
+    "input": "^1.0.1"
+  }
+}
