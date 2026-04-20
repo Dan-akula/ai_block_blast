@@ -80,8 +80,6 @@ export class Matrix{
 
     placeFigure({x, y, figure}){
         figure.form.forEach(peace => {
-            console.log(peace, figure.color)
-
             this.matrix[y+peace[1]][x+peace[0]] = figure.color
         });
     }

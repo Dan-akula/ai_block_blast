@@ -6,14 +6,11 @@ import {FIGURES} from './config.js'
 
 const game = new Game()
 
-game.cllRender()
-
 let test = new Figure({})
 
 test.randomaze()
 
-console.log(test)
 
-game.display.placeFigure({x:5, y:5, figure:test})
+game.getFigures()
 
 game.cllRender()
