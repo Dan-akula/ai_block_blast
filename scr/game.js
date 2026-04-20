@@ -14,21 +14,19 @@ class Game{
 
         let display = this.display.matrix
         for (const y of display){
-            process.stdout.write("          ")
+            process.stdout.write("|          ")
             for (const x of y){
                 process.stdout.write(TEXTURES[x])
             }
-            process.stdout.write("\n")
+            process.stdout.write("          |\n")
         }
-        process.stdout.write("\n")
-
     }
 
     _renderHotbar() {
         const figures = this.allowed_figures
 
         for (let y = -2; y <= 2; y++) {
-            let line = ''
+            let line = '|'
             for (let idx = 0; idx < figures.length; idx++) {
                 const figure = figures[idx]
                 for (let x = -2; x <= 2; x++) {
@@ -38,17 +36,22 @@ class Game{
                         line += '   '
                     }
                 }
-                line += ' '
+                line += '|'
             }
             process.stdout.write(line + '\n')
         }
     }
 
     cllRender(){
+        console.log("/-----------------------------------------------\\")
+        console.log(`|                     Score:${this.score}                   |`)
+        console.log("|                                               |")
+
         this._renderDisplay()
-        console.log("")
+        console.log("|                                               |")
+        console.log("|-----------------------------------------------|")
         this._renderHotbar()
-        console.log("")
+       console.log("\\-----------------------------------------------/")
     }
 
     checkClear(){           // remove second for, please
