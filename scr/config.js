@@ -70,14 +70,7 @@ const FIGURES = [
         [-1, 0], [0, 0], [1, 0]
     ],
 ]
-
-
 const TEXTURES = ["[ ]", '[#]', '[%]', '[$]']
 
 
-
-
-
 export {FIGURES, TEXTURES}
-
-

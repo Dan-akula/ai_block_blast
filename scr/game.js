@@ -2,7 +2,8 @@ import {FIGURES, TEXTURES} from "./config.js"
 import { randomElem } from "./utils.js"
 import { Matrix, Figure } from "./support_classes.js"
 
-class Game{
+
+class Game{     // SEPARATE FUCKING CLL!!!!
     constructor(){
         this.score = 0
         this.display = new Matrix({width:9, higth:9})
@@ -42,9 +43,9 @@ class Game{
         }
     }
 
-    cllRender(){
+    cllRender(){            // One time ill refactor ts
         console.log("/-----------------------------------------------\\")
-        console.log(`|                     Score:${this.score}                   |`)
+        console.log(`|                    Score:${this.score}                    |`)
         console.log("|                                               |")
 
         this._renderDisplay()
@@ -53,6 +54,11 @@ class Game{
         this._renderHotbar()
        console.log("\\-----------------------------------------------/")
     }
+
+    cllInput(){
+        
+    }
+
 
     checkClear(){           // remove second for, please
         let res = []
