@@ -8,57 +8,8 @@ class Game{     // SEPARATE FUCKING CLL!!!!
         this.score = 0
         this.display = new Matrix({width:9, higth:9})
         this.display.randomFill([0])
-        this.allowed_figures = [new Figure({form:[[0,0], [1,0], [0, 1], [1, 1]], color:1})]
+        this.allowed_figures = [new Figure({form:[[0,0], [1,0], [0, 1], [1, 1]], color:2})]
     }
-
-    _renderDisplay(){
-
-        let display = this.display.matrix
-        for (const y of display){
-            process.stdout.write("|          ")
-            for (const x of y){
-                process.stdout.write(TEXTURES[x])
-            }
-            process.stdout.write("          |\n")
-        }
-    }
-
-    _renderHotbar() {
-        const figures = this.allowed_figures
-
-        for (let y = -2; y <= 2; y++) {
-            let line = '|'
-            for (let idx = 0; idx < figures.length; idx++) {
-                const figure = figures[idx]
-                for (let x = -2; x <= 2; x++) {
-                    if (figure.form.some(item => item[0] === x && item[1] === y)) {
-                        line += TEXTURES[figure.color]
-                    } else {
-                        line += '   '
-                    }
-                }
-                line += '|'
-            }
-            process.stdout.write(line + '\n')
-        }
-    }
-
-    cllRender(){            // One time ill refactor ts
-        console.log("/-----------------------------------------------\\")
-        console.log(`|                    Score:${this.score}                    |`)
-        console.log("|                                               |")
-
-        this._renderDisplay()
-        console.log("|                                               |")
-        console.log("|-----------------------------------------------|")
-        this._renderHotbar()
-       console.log("\\-----------------------------------------------/")
-    }
-
-    cllInput(){
-        
-    }
-
 
     checkClear(){           // remove second for, please
         let res = []

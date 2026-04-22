@@ -8,5 +8,5 @@ const game = new Game()
 game.getFigures()
 
 const cios = new Cllio(game)
-game.cllRender()
 cios.output()
+cios.input()

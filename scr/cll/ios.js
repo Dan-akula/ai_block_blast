@@ -34,24 +34,44 @@ export class Cllio{
             left: lmid + " ".repeat(gd_margin-lmid.length),
             right: " ".repeat(gd_margin-rmid.length) + rmid
         }
-
-        
-
     }
 
-    _getRendGameLine(ind){
+    _getRendMatLine(work_arr){
         let line = ''
-
         
-        for (let col = 0; col < this.game.display.matrix[ind].length; col++) {
-            const pixel = this.game.display.matrix[ind][col];
+        for (let col = 0; col < work_arr.length; col++) {
+            const pixel = work_arr[col];
             line += TEXTURES[pixel]
         }
 
         return line
     }
 
-    _getRend
+    _getRendHotbarLine(){
+        
+    }
+
+    _renderHotbar() {
+        const figures = this.game.allowed_figures;
+        const lines = [];
+        for (let y = -2; y <= 2; y++) {
+
+            let line = '|';
+            for (let idx = 0; idx < figures.length; idx++) {
+                const figure = figures[idx];
+                for (let x = -2; x <= 2; x++) {
+                    if (figure.form.some(item => item[0] === x && item[1] === y)) {
+                        line += TEXTURES[figure.color];
+                    } else {
+                        line += '   ';
+                    }
+                }
+                line += '|';
+            }
+            lines.push(line);
+        }
+        return lines;
+    }
 
 
 
@@ -60,22 +80,29 @@ export class Cllio{
     }
 
     renderDisplay(){
+
+        let game_matrix = this.game.display.matrix
         let display = [
         this.hor_lines.top,
         this.empty_line,
-        `${this.br_gm.left}${this._getRendGameLine(0)}${this.br_gm.right}`,
-        `${this.br_gm.left}${this._getRendGameLine(1)}${this.br_gm.right}`,
-        `${this.br_gm.left}${this._getRendGameLine(2)}${this.br_gm.right}`,
-        `${this.br_gm.left}${this._getRendGameLine(3)}${this.br_gm.right}`,
-        `${this.br_gm.left}${this._getRendGameLine(4)}${this.br_gm.right}`,
-        `${this.br_gm.left}${this._getRendGameLine(5)}${this.br_gm.right}`,
-        `${this.br_gm.left}${this._getRendGameLine(6)}${this.br_gm.right}`,
-        `${this.br_gm.left}${this._getRendGameLine(7)}${this.br_gm.right}`,
-        `${this.br_gm.left}${this._getRendGameLine(8)}${this.br_gm.right}`,
-        this.empty_line,
-        this.hor_lines.mid,
-        this.hor_lines.bot
         ]
+
+        for (let ind = 0; ind < 9; ind++) {
+            display.push(`${this.br_gm.left}${this._getRendMatLine(game_matrix[ind])}${this.br_gm.right}`)
+        }
+
+        display.push(
+            this.empty_line,
+            this.hor_lines.mid)
+
+
+        const hotbar = this._renderHotbar()
+
+        hotbar.map(line => display.push(line))
+
+        display.push(
+            this.hor_lines.bot
+        )
 
         return display.join("\n")
     }
