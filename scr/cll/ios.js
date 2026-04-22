@@ -75,8 +75,10 @@ export class Cllio{
 
 
 
-    input(){
-
+    input({x, y, fig}){     // THIS IS FUCKING PLACEHOLDER
+        x = Number(x)
+        y = Number(y)
+        this.game.display.placeFigure({x:x, y:y, figure:this.game.allowed_figures[fig]})
     }
 
     renderDisplay(){

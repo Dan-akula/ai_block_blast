@@ -7,6 +7,11 @@ import {FIGURES} from './config.js'
 const game = new Game()
 game.getFigures()
 
+
 const cios = new Cllio(game)
-cios.output()
-cios.input()
+while (true){
+    cios.output()
+    await cios.input(
+        {x:await input.text("x"), y:await input.text("y"), fig:await input.text("fig_num")}
+    )
+}
